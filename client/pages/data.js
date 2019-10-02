@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Head from 'next/head';
 import Layout from "../components/layout";
-import "../style.css";
+
 
 class Data extends React.Component {
 
@@ -36,9 +36,12 @@ class Data extends React.Component {
     render () {
         let {cols} = this.state;
         return (
-            <div className="container">
-
-                <Layout />
+            <div>
+                <Head>
+                    <title>Data Form</title>
+                    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic"/>
+                </Head>
+                <Layout/>
                 <div className="form-container">
                     <form onSubmit={this.handleSubmit} onChange={this.handleChange}>
                         <label htmlFor="tbname">Table Name</label>
@@ -78,43 +81,6 @@ class Data extends React.Component {
                         <br/>
                     </form>
                 </div>
-
-                {/*<div className="col-12">
-                    <div className="card">
-                        <div className="card-body">
-                            <h4 className="card-title">Table Info</h4>
-                            <form className="form-sample">
-                                <p className="card-description">Metadata</p>
-                                <div className="row">
-                                    <div className="row-col">
-                                        <div className="form-group row">
-                                            <label className="label">Table Name</label>
-                                            <div className="input">
-                                                <input className="form-control">
-
-                                                </input>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="row-col">
-                                        <div className="form-group row">
-                                            <label className="label"># of Columns</label>
-                                            <div className="input">
-                                                <input className="form-control">
-
-                                                </input>
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                </div>
-                                <div className="row">
-                                <p>hi</p>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>*/}
             </div>
 
         )
