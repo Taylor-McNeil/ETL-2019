@@ -1,21 +1,17 @@
 {
   "name": "client",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "version": "0.1.0",
+  "private": true,
   "scripts": {
-    "dev": "next",
+    "dev": "next dev",
     "build": "next build",
     "start": "next start"
   },
-  "keywords": [
-    "ETL"
-  ],
-  "author": "James Nguyen",
-  "license": "ISC",
   "dependencies": {
-    "next": "^9.0.6",
-    "react": "^16.9.0",
-    "react-dom": "^16.9.0"
+    "@zeit/next-css": "^1.0.1",
+    "next": "9.0.6",
+    "react": "16.9.0",
+    "react-dom": "16.9.0",
+    "styled-components": "^4.4.0"
   }
 }

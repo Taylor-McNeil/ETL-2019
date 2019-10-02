@@ -1,11 +1,10 @@
 import React from 'react';
-import Navbar from "./navbar";
-import Sidenav from "./sidenav";
+import Nav from './nav';
+import "../style.css";
 
 const Layout = (props) => (
     <div>
-        <Navbar/>
-        <Sidenav/>
+        <Nav/>
         {props.children}
     </div>
 );

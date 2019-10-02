@@ -1,10 +1,10 @@
 import React from 'react';
 import "../style.css"
 
-const Login = () => (
+const Register = () => (
     <div>
 
     </div>
 );
 
-export default Login;
+export default Register;
