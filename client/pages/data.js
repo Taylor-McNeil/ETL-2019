@@ -44,41 +44,43 @@ class Data extends React.Component {
                 <Layout/>
                 <div className="form-container">
                     <form onSubmit={this.handleSubmit} onChange={this.handleChange}>
-                        <label htmlFor="tbname">Table Name</label>
-                        <br/>
-                        <input className="nsb" type="text" name="tbname" id="tbname" />
-                        <br/>
-                        <label htmlFor="colnum">Number of Columns </label>
-                        <br/>
-                        <input className="nsb" type="number" name="colnum" id="colnum" value={cols.length}/>
-                        <br/>
-                        <button onClick={this.addCol}>Add column</button>
-                        {
-                            cols.map((val, idx)=> {
-                                let colId = `col-$(idx)`, typeId = `type-$(idx)`
-                                return (
-                                    <div key={idx}>
-                                        <label htmlFor={colId}>{`Col #${idx+1}`}</label>
-                                        <br/>
-                                        <input
-                                            type="text"
-                                            name={colId}
-                                            data-id={idx}
-                                            id={colId}
-                                            value={cols[idx].name}
-                                            className="name"
-                                        />
-                                        <button onClick={() =>this.handleRemove(idx)} className="rmv">Remove</button>
-                                        <br/>
-                                    </div>
-                                )
-                            })
-                        }
-                        <br/>
-                        <button>
-                            <input className="sb" type="submit"/>
-                        </button>
-                        <br/>
+                        <div className="field">
+                            <label className="label" htmlFor="tbname">Table Name</label>
+                            <div className="control">
+                                <input className="nsb" type="text" name="tbname" id="tbname" />
+                            </div>
+                        </div>
+                        <div className="field">
+                            <label className="label" htmlFor="colnum"># of Columns </label>
+                            <input className="nsb" type="number" name="colnum" id="colnum" value={cols.length}/>
+                        </div>
+                        <div className="control2">
+                            <button className="button2" onClick={this.addCol}>Add column</button>
+                            {
+                                cols.map((val, idx)=> {
+                                    let colId = `col-$(idx)`, typeId = `type-$(idx)`
+                                    return (
+                                        <div className="field2" key={idx}>
+                                            <br/>
+                                            <label className="label" htmlFor={colId}>{`Col #${idx+1}`}</label>
+                                            <input
+                                                type="text"
+                                                name={colId}
+                                                data-id={idx}
+                                                id={colId}
+                                                value={cols[idx].name}
+                                                className="nsb2"
+                                            />
+                                            <button className="button2" onClick={() =>this.handleRemove(idx)}>Remove</button>
+                                        </div>
+                                    )
+                                })
+                            }
+                        </div>
+                        <div className="control2">
+                            <button className="submit-btn" type="submit">Submit</button>
+                        </div>
+
                     </form>
                 </div>
             </div>
