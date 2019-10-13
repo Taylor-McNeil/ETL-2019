@@ -20,7 +20,7 @@ const Home = () => (
       </p>
 
       <div className='row'>
-          <Link href="/dashboard">
+          <Link href="http://localhost:8000/accounts/login/">
             <a className='button'>
               <h3>Login</h3>
             </a>

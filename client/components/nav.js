@@ -47,8 +47,8 @@ const Nav = () => (
                             </Link>
                         </li>
                         <li className="menu-item">
-                            <Link href="#">
-                                <a><span className="test">Account</span></a>
+                            <Link href="http://127.0.0.1:8000/accounts/logout/">
+                                <a><span className="test">Logout</span></a>
                             </Link>
                         </li>
                     </ul>
