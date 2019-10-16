@@ -25,7 +25,7 @@ const Dash = () => (
                             <div className="card-header">Frankie</div>
                             <div className="card-body">
                                 <h4 className="card-title">Backend Dev</h4>
-                                <p className="card-text">Backend (SQL)</p>
+                                <p className="card-text">Connect to Data Source and Database Management</p>
                             </div>
                         </div>
                     </div>
