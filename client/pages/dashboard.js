@@ -34,7 +34,7 @@ const Dash = () => (
                             <div className="card-header">Kamil</div>
                             <div className="card-body">
                                 <h4 className="card-title">Full Stack Dev</h4>
-                                <p className="card-text">React/Django Stack</p>
+                                <p className="card-text">Login Auth and Account Management</p>
                             </div>
                         </div>
                     </div>
@@ -43,7 +43,7 @@ const Dash = () => (
                             <div className="card-header">James</div>
                             <div className="card-body">
                                 <h4 className="card-title">Full Stack Dev</h4>
-                                <p className="card-text">React/Django Stack</p>
+                                <p className="card-text">Project Structure Setup and Metadata Form</p>
                             </div>
                         </div>
                     </div>
