@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
 import Head from 'next/head';
 import Layout from "../components/layout";
+import '../static/bootstrap.min.css';
 
 
 class Data extends React.Component {
 
     state = {
-        cols : [{name:"", type:""}]
+        cols : [{name:"", type:""}],
+        file:"",
+        col_num:"",
     };
 
     handleChange = (e) => {
@@ -39,48 +42,71 @@ class Data extends React.Component {
             <div>
                 <Head>
                     <title>Data Form</title>
-                    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic"/>
                 </Head>
                 <Layout/>
-                <div className="form-container">
+                <br/>
+                <div className="container">
+                    <h1>Metadata</h1>
+                    <p className="lead">
+                        The data submitted will be used to create a new table in the database as well as for comparison
+                        with scanned files in our backend.
+                    </p>
+                    <hr />
                     <form onSubmit={this.handleSubmit} onChange={this.handleChange}>
-                        <div className="field">
-                            <label className="label" htmlFor="tbname">Table Name</label>
-                            <div className="control">
-                                <input className="nsb" type="text" name="tbname" id="tbname" />
+                        <div className="form-row">
+                            <div className="col-md-8">
+                                <input type="text" className="form-control" placeholder="File Name"/>
+                            </div>
+                            <div className="col-md-2">
+                                <input type="number" className="form-control" placeholder="# of Columns"/>
+                            </div>
+                            <div className="col-md-2">
+                                <button type="button" className="btn btn-primary" onClick={this.addCol}>Add Col</button>
+                            </div>
+                            <hr />
+                        </div>
+                        <br />
+                        {
+                            cols.map((val,idx) => {
+                                let colId = `col-$(idx)`, typeId = `type-$(idx)`;
+                                return (
+                                    <div>
+                                        <div className="form-row mb-1" key={idx}>
+                                            <div className="col-md-8">
+                                                <input
+                                                    type="text"
+                                                    name={colId}
+                                                    data-id={idx}
+                                                    id={colId}
+                                                    value={cols[idx].name}
+                                                    placeholder={`Column ${idx+1}`}
+                                                    className="form-control name"
+                                                />
+                                            </div>
+                                            <div className="col-md-2">
+                                                <input
+                                                    type="text"
+                                                    name={colId}
+                                                    data-id={idx}
+                                                    id={colId}
+                                                    value={cols[idx].type}
+                                                    placeholder="Data Type"
+                                                    className="form-control name"
+                                                />
+                                            </div>
+                                            <div className="col-md-2">
+                                                <button type="button" className="btn btn-primary" onClick={() => this.handleRemove(idx)}>Remove</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                )
+                            })
+                        }
+                        <div className="form-row">
+                            <div className="col text-center">
+                                <button type="submit" className="btn btn-primary">Submit</button>
                             </div>
                         </div>
-                        <div className="field">
-                            <label className="label" htmlFor="colnum"># of Columns </label>
-                            <input className="nsb" type="number" name="colnum" id="colnum" value={cols.length}/>
-                        </div>
-                        <div className="control2">
-                            <button className="button2" onClick={this.addCol}>Add column</button>
-                            {
-                                cols.map((val, idx)=> {
-                                    let colId = `col-$(idx)`, typeId = `type-$(idx)`
-                                    return (
-                                        <div className="field2" key={idx}>
-                                            <br/>
-                                            <label className="label" htmlFor={colId}>{`Col #${idx+1}`}</label>
-                                            <input
-                                                type="text"
-                                                name={colId}
-                                                data-id={idx}
-                                                id={colId}
-                                                value={cols[idx].name}
-                                                className="nsb2"
-                                            />
-                                            <button className="button2" onClick={() =>this.handleRemove(idx)}>Remove</button>
-                                        </div>
-                                    )
-                                })
-                            }
-                        </div>
-                        <div className="control2">
-                            <button className="submit-btn" type="submit">Submit</button>
-                        </div>
-
                     </form>
                 </div>
             </div>
