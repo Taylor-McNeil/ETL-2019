@@ -5,6 +5,7 @@ import { HashRouter as Router, Route, Switch, Redirect } from "react-router-dom"
 import Dashboard from "./layout/Dashboard";
 import Home from "./Home";
 import Rules from "./Rules";
+import Landing from "./Landing";
 
 import { Provider } from 'react-redux';
 import store from '../store';
@@ -15,8 +16,8 @@ class App extends Component {
             <Provider store={store}>
                 <Router>
                     <Fragment>
-                        <Dashboard />
                         <Switch>
+                            <Route exact path="/landing" component={Landing} />
                             <Route exact path="/" component={Home} />
                             <Route exact path="/rules" component={Rules} />
                         </Switch>

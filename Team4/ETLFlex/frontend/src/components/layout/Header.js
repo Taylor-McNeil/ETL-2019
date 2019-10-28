@@ -15,7 +15,7 @@ export class Header extends Component {
                             <Link to="/rules" className="nav-link">Create New Rule</Link>
                         </li>
                         <li className="nav-item float-sm-right">
-                            <a className="nav-link">Logout</a>
+                            <Link to="/landing" className="nav-link">Logout</Link>
                         </li>
                     </ul>
                 </div>

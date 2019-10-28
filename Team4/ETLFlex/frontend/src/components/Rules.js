@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 
 import rules from "../reducers/rules";
 import RulesForm from "./RulesForm";
+import Header from "./layout/Header";
 
 class Rules extends Component {
     static propTypes = {
@@ -18,11 +19,10 @@ class Rules extends Component {
         this.props.getRules();
     }
 
-
-
     render () {
         return (
            <Fragment>
+               <Header />
                <div className="container">
                    <div className="card card-body p-4">
                        <RulesForm />
