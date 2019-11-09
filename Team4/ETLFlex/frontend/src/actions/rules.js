@@ -2,6 +2,10 @@ import axios from 'axios';
 
 import {GET_RULES, DELETE_RULES, ADD_RULES } from "./types";
 
+//axios.defaults.xsrfCookieName = 'csrftoken'
+//axios.defaults.xsrfHeaderName = 'X-CSRFToken'
+//axios.defaults.withCredentials = true
+
 // GET RULES
 export const getRules = () => dispatch => {
     axios.get('/api/rules/')
@@ -28,7 +32,7 @@ export const deleteRules = (id) => dispatch => {
 
 // ADD RULES
 export const addRules = (rules) => dispatch => {
-    axios.post("/api/rules/",rules)
+    axios.post( "/api/rules/",rules)
         .then(res => {
             dispatch({
                 type: ADD_RULES,

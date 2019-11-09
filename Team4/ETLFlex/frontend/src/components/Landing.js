@@ -9,7 +9,7 @@ export class Landing extends Component {
                     <p className="lead">James | Kamil | Frankie | Taylor</p>
                     <hr className="my-4" />
                         <p className="lead">
-                            <a className="btn btn-primary btn-lg" href="#" role="button">Login</a>
+                            <a className="btn btn-primary btn-lg" href="home" role="button">Login</a>
                         </p>
                 </div>
             </div>
