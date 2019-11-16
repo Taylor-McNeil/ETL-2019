@@ -23,6 +23,7 @@ class Rules extends Component {
         return (
            <Fragment>
                <Header />
+               {/*
                <div className="container">
                    <div className="card card-body p-4">
                        <RulesForm />
@@ -52,6 +53,8 @@ class Rules extends Component {
                         </button>
                    </div>
                </div>
+                */}
+                <h1 className="text-center mt-5">Page being reworked :)</h1>
            </Fragment>
         )
     }

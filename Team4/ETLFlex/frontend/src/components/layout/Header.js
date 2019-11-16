@@ -12,7 +12,7 @@ export class Header extends Component {
                 <div className="collapse navbar-collapse" id="navbarNav">
                     <ul className="navbar-nav">
                         <li className="nav-item active">
-                            <Link to="/rules" className="nav-link">Create New Rule</Link>
+                            <Link to="/rules" className="nav-link">New Rule</Link>
                         </li>
                         <li className="nav-item float-sm-right">
                             <Link to="/landing" className="nav-link">Logout</Link>
