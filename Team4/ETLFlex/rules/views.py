@@ -28,6 +28,21 @@ def testPost(input):
         return JsonResponse("POST was not a fail",safe=False)
     except ValueError as e:
         return Response(e.args[0],status.HTTP_400_BAD_REQUEST)
+
 @api_view(["GET"])
 def testGet(input):
     return JsonResponse("GET was not a fail",safe=False)
+
+@api_view(["GET"])
+def getDashboard(input):
+    dashboardTable =  [ {"fileID" : 1,
+                        "fileName" : "file1", 
+                        "lastUpdate" : "11/16/19"},
+                        {"fileID" : 2,
+                        "fileName" : "file2", 
+                        "lastUpdate" : "11/16/19"}, 
+                        {"fileID" : 3, 
+                        "fileName" : "file3", 
+                        "lastUpdate" : "11/16/19"},
+    ]
+    return JsonResponse(dashboardTable, safe = False)

@@ -12,5 +12,6 @@ router.register('api/rules', RulesViewSet, 'rules')
 urlpatterns = [
     path('', include(router.urls)),
     url('testPost/', views.testPost),    
-    url('testGet/', views.testGet)
+    url('testGet/', views.testGet),
+    url('getDashboard', views.getDashboard)
 ]
