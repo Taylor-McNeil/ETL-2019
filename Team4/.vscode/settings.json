@@ -1,3 +1,4 @@
 {
-    "python.pythonPath": "C:\\Users\\rutko\\.virtualenvs\\Team4-TizTqC2_\\Scripts\\python.exe"
+    "python.pythonPath": "C:\\Users\\rutko\\.virtualenvs\\Team4-TizTqC2_\\Scripts\\python.exe",
+    "editor.defaultFormatter": "HookyQR.beautify"
 }
