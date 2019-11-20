@@ -8,9 +8,9 @@ from rest_framework import status
 from django.http import JsonResponse
 from django.core import serializers
 from django.conf import settings
-from Database.Database import Database
-from RepoScanner import RepoScanner
-from Admin import Admin
+from ETLFlex.backend.FlexFile.Database.Database import Database
+from ETLFlex.backend.FlexFile.RepoScanner import RepoScanner
+from ETLFlex.backend.FlexFile.Admin import Admin
 import json
 
 # Create your views here.
@@ -28,6 +28,7 @@ class testClass(viewsets.ViewSet):
 @api_view(["POST"])
 def rule_submission(input):
     try:
+
         data_capture = json.loads(input.body)[0]
         admin = Admin(data_capture)
         rule_result = admin.check_for_rule()
@@ -107,6 +108,7 @@ def testGet(input):
     return JsonResponse("GET was not a fail", safe=False)
 
 
+# Change these names for uniformity - file_id, file_name, last_update
 @api_view(["GET"])
 def getDashboard(input):
     dashboardTable = [{"fileID": 1,
