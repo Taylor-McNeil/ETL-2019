@@ -6,12 +6,17 @@ from rules import views
 
 router = routers.DefaultRouter()
 router.register('api/rules', RulesViewSet, 'rules')
-#router.register(r'^admin/', admin.site.urls)
-#router.register('testPost/', views.testClass, 'testClass')
+# router.register(r'^admin/', admin.site.urls)
+# router.register('testPost/', views.testClass, 'testClass')
 
 urlpatterns = [
     path('', include(router.urls)),
     url('testPost/', views.testPost),    
     url('testGet/', views.testGet),
-    url('getDashboard', views.getDashboard)
+    url('getDashboard', views.getDashboard),
+    url('submit_rule/', views.rule_submission),
+    url('sync/', views.sync),
+    url('get_rules', views.get_rules),
+    url('get_file_history', views.get_file_history),
+    url('get_file_data', views.get_file_data)
 ]

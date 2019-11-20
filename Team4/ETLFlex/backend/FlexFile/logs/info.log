@@ -1,0 +1,31 @@
+INFO:root:10/29/2019, 21:27:16 : rule match does not exist, create new rule for sample_gpa.csv
+INFO:root:10/29/2019, 21:53:04 : rule match does not exist, create new rule for sample_gpa.csv
+INFO:root:10/30/2019, 16:09:17 : rule submission successful for sample_stocks.txt
+INFO:root:10/30/2019, 16:25:47 : rule submission successful for sample_stocks.txt
+INFO:root:10/30/2019, 16:27:04 : rule match does not exist, create new rule for sample_gpa.csv
+INFO:root:10/30/2019, 16:27:04 : sample_stocks.txt successfully uploaded to database
+INFO:root:10/30/2019, 16:44:37 : rule match does not exist, create new rule for sample_gpa.csv
+INFO:root:10/30/2019, 16:44:37 : rule match does not exist, create new rule for sample_stocks.txt
+INFO:root:10/30/2019, 17:41:37 : rule submission successful for sample_stocks.txt
+INFO:root:10/30/2019, 17:42:34 : rule match does not exist, create new rule for sample_gpa.csv
+INFO:root:10/30/2019, 17:42:34 : sample_stocks.txt successfully uploaded to database
+INFO:root:11/19/2019, 11:53:26 : rule submission successful for f1.txt
+INFO:root:11/19/2019, 11:53:26 : rule match does not exist, create new rule for f1.txt
+INFO:root:11/19/2019, 11:55:22 : rule submission successful for f1.txt
+INFO:root:11/19/2019, 11:58:39 : rule submission successful for f1.txt
+INFO:root:11/19/2019, 13:26:49 : rule submission successful for f1.txt
+INFO:root:11/19/2019, 13:29:16 : rule already exists in database for f1.txt
+INFO:root:11/19/2019, 13:43:18 : f1.txt successfully uploaded to database
+INFO:root:11/19/2019, 19:03:48 : rule submission successful for f1.txt
+INFO:root:11/19/2019, 19:23:02 : rule submission successful for f1.txt
+INFO:root:11/19/2019, 19:23:02 : f1.txt successfully uploaded to database
+INFO:root:11/19/2019, 19:36:27 : rule already exists in database for f1.txt
+INFO:root:11/19/2019, 19:38:54 : rule already exists in database for f1.txt
+INFO:root:11/19/2019, 19:54:42 : rule submission successful for sample_web_file.csv
+INFO:root:11/19/2019, 19:57:25 : rule already exists in database for sample_web_file.csv
+INFO:root:11/19/2019, 19:57:41 : rule already exists in database for sample_web_file.csv
+INFO:root:11/19/2019, 19:57:43 : rule match does not exist, create new rule for sample_web_file.csv
+INFO:root:11/19/2019, 19:59:51 : rule match does not exist, create new rule for sample_web_file.csv
+INFO:root:11/19/2019, 20:03:07 : rule match does not exist, create new rule for sample_web_file.csv
+INFO:root:11/19/2019, 20:04:01 : rule match does not exist, create new rule for sample_web_file.csv
+INFO:root:11/19/2019, 20:16:18 : sample_web_file.csv successfully uploaded to database
