@@ -1,6 +1,6 @@
-from FTP_Connect import FTP_Connect
-from Database.Database import Database
-from Admin import Admin
+from .FTP_Connect import FTP_Connect
+from .Database.Database import Database
+from .Admin import Admin
 import pandas as pd
 import ftplib
 import pathlib

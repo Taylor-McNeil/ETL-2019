@@ -1,6 +1,6 @@
-from Database.Database import Database
+from .Database.Database import Database
 import pandas as pd
-from logmanager import LogManager
+from . import logmanager
 from datetime import datetime
 
 

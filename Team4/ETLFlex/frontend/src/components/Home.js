@@ -9,10 +9,10 @@ export class Home extends Component {
         table: null,
     }
     async componentDidMount(){
-        const url = "http://127.0.0.1:8000/getDashboard";
+        const url = "http://127.0.0.1:8000/get_rules";
         const response = await fetch(url);
         const data = await response.json();
-        //console.log(data);
+        console.log(data);
         this.setState({table: data, loading: false});
     }
 
@@ -23,11 +23,12 @@ export class Home extends Component {
 
             for (let i = 0; i < this.state.table.length; i++) {
                 let row = this.state.table[i];
+                console.log(row);
                 table.push(<tr class = "row">
-                    <td className="col-2">{row.fileID}</td>
-                    <td className="col-4">{row.fileName}</td>
-                    <td className="col-4">{row.lastUpdate}</td>
-                    <td className="col-2"><Link to="/filehistory">Edit</Link></td>
+                    <td className="col-2">{row.file_id}</td>
+                    <td className="col-4"><Link to="/filehistory">{row.file_name}</Link></td>
+                    <td className="col-4">{row.last_update}</td>
+                    <td className="col-2"><Link to="/rules">Edit</Link></td>
                 </tr>)
                 }
                 return table

@@ -1,4 +1,4 @@
-import ftp_utility
+from . import ftp_utility
 
 
 class FTP_Connect:

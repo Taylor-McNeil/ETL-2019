@@ -9,7 +9,7 @@ class Database:
         self._db_name = 'flex_db'
         self._host = 'localhost'
         self._user = 'root'
-        self._passwd = '1qaz@WSX3edc$RFV'
+        self._passwd = 'Poland1997'
 
         # Table names
         self._file_master = 'file_master'
