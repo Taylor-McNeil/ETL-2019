@@ -1,6 +1,6 @@
-from Database.Database import Database
+from .Database.Database import Database
 import pandas as pd
-from logmanager import LogManager
+from .logmanager import LogManager
 from datetime import datetime
 
 
@@ -52,8 +52,13 @@ class Admin:
 
         # File attributes
         self.file_ext = ''
-        self.downloads_dir = '.\\downloads\\'
+        # self.for_postman_dir = '.\\downloads\\'
+        # self.for_sys_dir = '.\\downloads\\'
         self.now = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+
+        # File paths
+        self.config_path = 'C:\\code\\project_flex\\ETL-2019\\Team4\\ETLFlex\\rules\\FlexFile\\config\\last_fileid.txt'
+        self.downloads_path = 'C:\\code\\project_flex\\ETL-2019\\Team4\\ETLFlex\\rules\\FlexFile\\downloads\\'
 
     def check_filename(self):
         # Pull record matching file_name from file_master
@@ -101,7 +106,7 @@ class Admin:
         self.username = self.data['username']
         self._pass_key = self.data['password']
 
-        with open('.\\config\\last_fileid.txt', 'r') as f:
+        with open(self.config_path, 'r') as f:
             self.file_id = int(f.read()) + 1
 
         _query = 'INSERT INTO file_master (file_id, file_name, num_cols, last_update, src, src_type, dir, username,' \
@@ -125,7 +130,7 @@ class Admin:
         self.db.conn.commit()
         # self.db.cur.close()
 
-        with open('.\\config\\last_fileid.txt', 'w') as f:
+        with open(self.config_path, 'w') as f:
             f.write(str(self.file_id))
 
         self.col_num = 1
@@ -145,9 +150,10 @@ class Admin:
 
         read_file = None
         if self.file_ext in csv_ext:
-            read_file = pd.read_csv(self.downloads_dir + str(self.file_name))
+            read_file = pd.read_csv(self.downloads_path + str(self.file_name), delimiter=",", dtype=str,
+                                    low_memory=False)
         elif self.file_ext in xlsx_ext:
-            read_file = pd.read_excel(self.downloads_dir + str(self.file_name))
+            read_file = pd.read_excel(self.downloads_path + str(self.file_name))
         df = pd.DataFrame(read_file)
         number_of_rows = len(df.index)
 

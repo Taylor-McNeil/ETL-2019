@@ -5,16 +5,19 @@ from datetime import datetime
 class LogManager:
 
     def __init__(self):
+        self.logs_path = 'C:\\code\\project_flex\\ETL-2019\\Team4\\ETLFlex\\rules\\FlexFile\\logs\\'
 
         # System logs
-        self.ERROR_LOG = '.\\logs\\errors.log'
-        self.DEBUG_LOG = '.\\logs\\debug.log'
-        self.STATUS_LOG = '.\\logs\\info.log'
-        self.CRITICAL_LOG = '.\\logs\\critical.log'
+        self.ERROR_LOG = self.logs_path + '.errors.log'
+        self.DEBUG_LOG = self.logs_path + 'debug.log'
+        self.STATUS_LOG = self.logs_path + 'info.log'
+        self.CRITICAL_LOG = self.logs_path + 'critical.log'
         logging.basicConfig(filename=self.STATUS_LOG, level=logging.INFO)
         logging.basicConfig(filename=self.DEBUG_LOG, level=logging.DEBUG)
         logging.basicConfig(filename=self.ERROR_LOG, level=logging.ERROR)
         logging.basicConfig(filename=self.CRITICAL_LOG, level=logging.CRITICAL)
+
+        # Date
         self.now = datetime.now()
 
     def successful_file_upload(self, file_name):

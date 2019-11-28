@@ -29,3 +29,35 @@ INFO:root:11/19/2019, 19:59:51 : rule match does not exist, create new rule for 
 INFO:root:11/19/2019, 20:03:07 : rule match does not exist, create new rule for sample_web_file.csv
 INFO:root:11/19/2019, 20:04:01 : rule match does not exist, create new rule for sample_web_file.csv
 INFO:root:11/19/2019, 20:16:18 : sample_web_file.csv successfully uploaded to database
+INFO:root:11/27/2019, 18:47:50 : rule submission successful for mass_dataset.csv
+ERROR:django.request:Internal Server Error: /submit_rule/
+INFO:django.utils.autoreload:C:\code\project_flex\ETL-2019\Team4\ETLFlex\rules\FlexFile\RepoScanner.py changed, reloading.
+INFO:root:11/27/2019, 19:05:00 : rule submission successful for mass_dataset.csv
+INFO:django.utils.autoreload:C:\code\project_flex\ETL-2019\Team4\ETLFlex\rules\views.py changed, reloading.
+INFO:root:11/27/2019, 19:09:25 : rule submission successful for mass_dataset.csv
+INFO:django.utils.autoreload:C:\code\project_flex\ETL-2019\Team4\ETLFlex\rules\FlexFile\RepoScanner.py changed, reloading.
+WARNING:django.request:Bad Request: /sync/
+WARNING:django.request:Bad Request: /sync/
+WARNING:django.request:Bad Request: /sync/
+WARNING:django.request:Bad Request: /sync/
+INFO:django.utils.autoreload:C:\code\project_flex\ETL-2019\Team4\ETLFlex\rules\views.py changed, reloading.
+INFO:root:11/27/2019, 19:35:24 : rule match does not exist, create new rule for mass_dataset.csv
+INFO:django.utils.autoreload:C:\code\project_flex\ETL-2019\Team4\ETLFlex\rules\FlexFile\RepoScanner.py changed, reloading.
+INFO:root:11/27/2019, 19:41:11 : rule submission successful for mass_dataset.csv
+INFO:root:11/28/2019, 09:35:44 : rule already exists in database for mass_dataset.csv
+INFO:root:11/28/2019, 09:36:36 : rule already exists in database for mass_dataset.csv
+INFO:django.utils.autoreload:C:\code\project_flex\ETL-2019\Team4\ETLFlex\rules\FlexFile\Admin.py changed, reloading.
+INFO:root:11/28/2019, 10:59:35 : rule match does not exist, create new rule for mass_dataset.csv
+INFO:django.utils.autoreload:C:\code\project_flex\ETL-2019\Team4\ETLFlex\rules\FlexFile\Admin.py changed, reloading.
+INFO:root:11/28/2019, 11:07:15 : rule submission successful for mass_dataset.csv
+INFO:root:11/28/2019, 11:10:54 : rule submission successful for mass_dataset.csv
+INFO:root:11/28/2019, 11:48:41 : mass_dataset.csv successfully uploaded to database
+INFO:root:11/28/2019, 12:18:07 : mass_dataset.csv successfully uploaded to database
+INFO:root:11/28/2019, 12:19:04 : mass_dataset.csv successfully uploaded to database
+INFO:root:11/28/2019, 12:20:01 : mass_dataset.csv successfully uploaded to database
+INFO:root:11/28/2019, 12:20:59 : mass_dataset.csv successfully uploaded to database
+INFO:root:11/28/2019, 12:22:01 : mass_dataset.csv successfully uploaded to database
+INFO:root:11/28/2019, 12:24:26 : mass_dataset.csv successfully uploaded to database
+INFO:root:11/28/2019, 12:25:23 : mass_dataset.csv successfully uploaded to database
+INFO:root:11/28/2019, 13:18:26 : mass_dataset.csv successfully uploaded to database
+INFO:django.utils.autoreload:C:\code\project_flex\ETL-2019\Team4\ETLFlex\rules\FlexFile\Database\Database.py changed, reloading.

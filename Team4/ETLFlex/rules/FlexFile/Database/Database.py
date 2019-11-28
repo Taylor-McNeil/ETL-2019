@@ -1,5 +1,6 @@
 import mysql.connector
 import pandas as pd
+import json
 
 
 class Database:
@@ -21,6 +22,15 @@ class Database:
         self.conn = self.connect_db()
         self.cur = self.conn.cursor()
 
+    # Get all rules for dashboard
+    def test(self):
+        query = 'SELECT * FROM ' + self._data_master + ' WHERE file_id = 3'
+        df = pd.read_sql(query, self.conn)
+        df1 = df.isna().any(axis=1)
+        print(df)
+        print()
+
+    # Grab all repository info from DB for creating connections
     def get_conns(self):
         all_conns = []
         query = 'SELECT file_name,src,src_type,dir,username,pass_key FROM ' + self._file_master
@@ -29,27 +39,35 @@ class Database:
             all_conns.append(df.iloc[i].to_dict())
         return all_conns
 
+    # Get all rules for dashboard
     def get_rules(self):
-        rules = []
+        temp = []
         query = 'SELECT file_id,file_name,last_update FROM ' + self._file_master
         df = pd.read_sql(query, self.conn)
         for i in df.index:
-            rules.append(df.iloc[i].to_dict())
-        return rules
+            temp.append(df.iloc[i].to_dict())
 
+        output = self.output_refactor(temp)
+        return output
+
+    # Get file history - displays file upload dates and number of rows add to DB
     def get_file_history(self, data):
-        _file_name = data['file_name']       # OR file_id
+        _file_name = data['file_name']      # OR file_id
         file_history = []
-        query = 'SELECT date_uploaded,num_of_rows FROM ' + self._date_master + ' WHERE file_name = ' + _file_name
-        df = pd.read_sql(query, self.conn)
+        query = 'SELECT date_uploaded,num_of_rows FROM ' + self._date_master + ' WHERE file_name = %s'
+        df = pd.read_sql(query, self.conn, params=(_file_name,))
         for i in df.index:
             file_history.append(df.iloc[i].to_dict())
-        return file_history
+
+        output = self.output_refactor(file_history)
+        return output
 
     def get_file_data(self, data):
         file_data = []
+        _file_name = data['file_name']
+        date_uploaded = data['date_uploaded']
         query = 'SELECT file_id FROM ' + self._file_master + ' WHERE file_name = %s'
-        prevent_inject = (data['file_name'],)
+        prevent_inject = (_file_name, date_uploaded)
         self.cur.execute(query, prevent_inject)
         result = self.cur.fetchall()
         _file_id = result[0][0]
@@ -59,7 +77,8 @@ class Database:
         df_col = pd.read_sql(query, self.conn)
         col_headers = list(df_col['col_name'])
 
-        query = 'SELECT col_num,row_num,value FROM ' + self._data_master + ' WHERE file_id = ' + str(_file_id)
+        query = 'SELECT col_num,row_num,value FROM ' \
+                + self._data_master + ' WHERE file_id = ' + str(_file_id) + ' AND date_uploaded = ' + date_uploaded
         df_values = pd.read_sql(query, self.conn)
 
         temp = []
@@ -77,7 +96,8 @@ class Database:
         for i in df_final.index:
             file_data.append(df_final.iloc[i].to_dict())
 
-        return file_data
+        output = self.output_refactor(file_data)
+        return output
 
     def connect_db(self):
         connection = mysql.connector.connect(
@@ -139,10 +159,20 @@ class Database:
         view = pd.DataFrame(df)
         return view
 
+    @staticmethod
+    def output_refactor(data):
+        rules = []
+        for record in data:
+            rule_dict = {}
+            for key, val in record.items():
+                rule_dict[str(key)] = str(val)
+            rules.append(rule_dict)
+        return rules
+
 
 def main():
     db = Database()
-    db.get_conns()
+    db.test()
 
 
 # main()

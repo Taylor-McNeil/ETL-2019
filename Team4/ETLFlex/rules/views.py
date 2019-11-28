@@ -27,15 +27,16 @@ class testClass(viewsets.ViewSet):
 
 @api_view(["POST"])
 def rule_submission(input):
+    # Input must have rule data with the exception of optional entries
     try:
-        data_capture = json.loads(input.body)[0]
+        data_capture = json.loads(input.body)
         admin = Admin(data_capture)
         rule_result = admin.check_for_rule()
         response_dict = {
             'Success': 'Rule has been submitted for ' + str(data_capture['file_name']),
             'Failure': 'Rule already exists for ' + str(data_capture['file_name'])
         }
-        if rule_result:
+        if not rule_result:
             return JsonResponse(response_dict['Success'], safe=False)
         else:
             return JsonResponse(response_dict['Failure'], safe=False)
@@ -43,8 +44,8 @@ def rule_submission(input):
         return Response(e.args[0], status.HTTP_400_BAD_REQUEST)
 
 
-@api_view(["POST"])
-def sync():
+@api_view(["GET"])
+def sync(input):
     try:
         rs = RepoScanner()
         file_result = rs.run_scanner()
@@ -60,34 +61,36 @@ def sync():
         return Response(e.args[0], status.HTTP_400_BAD_REQUEST)
 
 
-@api_view(["POST"])
-def get_rules():
+@api_view(["GET"])
+def get_rules(input):
     try:
         db = Database()
         rules = db.get_rules()
-        return JsonResponse(json.dumps(rules, ensure_ascii=False), safe=False)
+        return JsonResponse(rules, safe=False, content_type=json)
     except ValueError as e:
         return Response(e.args[0], status.HTTP_400_BAD_REQUEST)
 
 
 @api_view(["POST"])
 def get_file_history(input):
+    # Input json must have file_name
     try:
-        data_capture = json.loads(input.body)[0]
+        data_capture = json.loads(input.body)
         db = Database()
         file_history = db.get_file_history(data_capture)
-        return JsonResponse(json.dumps(file_history, ensure_ascii=False), safe=False)
+        return JsonResponse(file_history, safe=False, content_type=json)
     except ValueError as e:
         return Response(e.args[0], status.HTTP_400_BAD_REQUEST)
 
 
 @api_view(["POST"])
 def get_file_data(input):
+    # Input json must have file_name and date_uploaded from record clicked by user
     try:
-        data_capture = json.loads(input.body)[0]
+        data_capture = json.loads(input.body)
         db = Database()
         file_data = db.get_file_data(data_capture)
-        return JsonResponse(json.dumps(file_data, ensure_ascii=False), safe=False)
+        return JsonResponse(file_data, safe=False, content_type=json)
     except ValueError as e:
         return Response(e.args[0], status.HTTP_400_BAD_REQUEST)
 

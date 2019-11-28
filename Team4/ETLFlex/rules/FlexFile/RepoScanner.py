@@ -1,6 +1,6 @@
-from FTP_Connect import FTP_Connect
-from Database.Database import Database
-from Admin import Admin
+from .FTP_Connect import FTP_Connect
+from .Database.Database import Database
+from .Admin import Admin
 import pandas as pd
 import ftplib
 import pathlib
@@ -40,6 +40,10 @@ class RepoScanner:
         # Date
         self.now = datetime.now().strftime('%Y%m%d')
 
+        # File paths
+        self.config_path = 'C:\\code\\project_flex\\ETL-2019\\Team4\\ETLFlex\\rules\\FlexFile\\config\\last_fileid.txt'
+        self.downloads_path = 'C:\\code\\project_flex\\ETL-2019\\Team4\\ETLFlex\\rules\\FlexFile\\downloads\\'
+
     def run_scanner(self):
         self.conns = self.db.get_conns()
         for conn in self.conns:
@@ -52,34 +56,32 @@ class RepoScanner:
                 self.pwd = self.ftps.pwd()
                 self.read_ftp_file_names()
                 self.download_ftp_files()
-                self.call_admin()
 
             # Scanner on web link
             if str(conn['src_type']).lower() == 'url':
                 # self.url = conn['src']
                 # try:
-                #     with urllib.request.urlopen(conn['src']) as response, open('.\\downloads\\' +
+                #     with urllib.request.urlopen(conn['src']) as response, open('.\\rules\\FlexFile\\downloads\\' +
                 #                                                                str(conn['file_name']),
                 #                                                                'wb') as out_file:
                 #         shutil.copyfileobj(response, out_file)
                 # except urllib.request.HTTPError as e:
                 #     print(e)
-                self.call_admin()
+                # self.call_admin()
+                continue
 
             # Scanner on local file system
             if str(conn['src_type']).lower() == 'local':
                 # do something
-                pass
+                continue
 
+        self.call_admin()
         return self.response
 
     def read_ftp_file_names(self):
         # Acquiring file names in specified directory
         try:
             self.ftp_file_list = self.ftps.nlst()  # list of files in directory
-            # self.ftps.cwd(self.proc_directory)
-            # self.proc_file_list = self.ftps.nlst()
-            # self.ftps.cwd('..')
         except ftplib.error_perm as resp:
             print(resp)
 
@@ -92,7 +94,7 @@ class RepoScanner:
             if file in self.ftp_file_list:
                 try:
                     # Write file
-                    self.ftps.retrbinary('RETR ' + self.pwd + '/' + file, open('.\\downloads\\' + file, 'wb').write)
+                    self.ftps.retrbinary('RETR ' + self.pwd + '/' + file, open(self.downloads_path + file, 'wb').write)
                 except ftplib.all_errors as e:
                     print(e)
 
@@ -115,13 +117,12 @@ class RepoScanner:
             try:
                 read_file = None
                 if file_ext in csv_ext:
-                    read_file = pd.read_csv('.\\downloads\\' + file, encoding='ISO-8859-1')
+                    read_file = pd.read_csv(self.downloads_path + file, delimiter=',', dtype=str, low_memory=False)
                 elif file_ext in xlsx_ext:
-                    read_file = pd.read_excel('.\\downloads\\' + file)
+                    read_file = pd.read_excel(self.downloads_path + file)
 
                 # Grab column headers from file
                 self.column_list = list(read_file.columns)
-
                 data = {
                     'file_name': file,
                     'col': self.column_list
@@ -134,7 +135,7 @@ class RepoScanner:
                 if self.result:
                     self.response = True
                     try:
-                        rmv = pathlib.Path('.\\downloads\\' + file)
+                        rmv = pathlib.Path(self.downloads_path + file)
                         rmv.unlink()
                         if file in self.ftp_file_list:
                             self.move_ftp_files(file)
@@ -147,12 +148,6 @@ class RepoScanner:
             except FileNotFoundError:
                 continue
         self.file_list.clear()
+        self.ftps.close()
 
-#     self.ftps.close()
 
-
-def main():
-    rs = RepoScanner()
-    rs.run_scanner()
-
-# main()
