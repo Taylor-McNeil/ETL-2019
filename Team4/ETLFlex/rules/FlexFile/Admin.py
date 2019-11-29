@@ -158,12 +158,13 @@ class Admin:
         number_of_rows = len(df.index)
 
         self.col_num = 0
+        current_date = str(self.now)
         for row in range(number_of_rows):
             for col in range(self.received_col_num):
-                query = 'INSERT INTO data_master (file_id, col_num, row_num, value) VALUES ' \
-                        '(%s, %s, %s, %s)'
+                query = 'INSERT INTO data_master (file_id, col_num, row_num, value, date_uploaded) VALUES ' \
+                        '(%s, %s, %s, %s, %s)'
                 prevent_inject = (self.file_id, str(self.col_num + 1), str(row + 1),
-                                  str(df.iloc[row][self.columns_from_file[col]]))
+                                  str(df.iloc[row][self.columns_from_file[col]]), current_date)
                 self.col_num += 1
                 self.db.cur.execute(query, prevent_inject)
             self.col_num = 0
@@ -173,7 +174,7 @@ class Admin:
         self.col_name = ''
 
         _query = 'UPDATE file_master SET last_update = (%s) WHERE file_id = (%s)'
-        _prevent_inject = (str(self.now), str(self.file_id))
+        _prevent_inject = (current_date, str(self.file_id))
         self.db.cur.execute(_query, _prevent_inject)
         self.db.conn.commit()
 

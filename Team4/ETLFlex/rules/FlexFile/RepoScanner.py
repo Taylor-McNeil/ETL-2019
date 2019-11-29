@@ -57,7 +57,7 @@ class RepoScanner:
                 self.read_ftp_file_names()
                 self.download_ftp_files()
 
-            # Scanner on web link
+            # Scanner on url
             if str(conn['src_type']).lower() == 'url':
                 # self.url = conn['src']
                 # try:

@@ -27,7 +27,7 @@ class testClass(viewsets.ViewSet):
 
 @api_view(["POST"])
 def rule_submission(input):
-    # Input must have rule data with the exception of optional entries
+    # Input json must have rule data with the exception of optional entries (see test_rule.py)
     try:
         data_capture = json.loads(input.body)
         admin = Admin(data_capture)
@@ -46,6 +46,7 @@ def rule_submission(input):
 
 @api_view(["GET"])
 def sync(input):
+    # No input required
     try:
         rs = RepoScanner()
         file_result = rs.run_scanner()
@@ -63,6 +64,7 @@ def sync(input):
 
 @api_view(["GET"])
 def get_rules(input):
+    # No input required
     try:
         db = Database()
         rules = db.get_rules()
