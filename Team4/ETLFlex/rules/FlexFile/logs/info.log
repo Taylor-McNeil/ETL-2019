@@ -29,3 +29,73 @@ INFO:root:11/19/2019, 19:59:51 : rule match does not exist, create new rule for 
 INFO:root:11/19/2019, 20:03:07 : rule match does not exist, create new rule for sample_web_file.csv
 INFO:root:11/19/2019, 20:04:01 : rule match does not exist, create new rule for sample_web_file.csv
 INFO:root:11/19/2019, 20:16:18 : sample_web_file.csv successfully uploaded to database
+INFO:root:11/27/2019, 18:47:50 : rule submission successful for mass_dataset.csv
+ERROR:django.request:Internal Server Error: /submit_rule/
+INFO:django.utils.autoreload:C:\code\project_flex\ETL-2019\Team4\ETLFlex\rules\FlexFile\RepoScanner.py changed, reloading.
+INFO:root:11/27/2019, 19:05:00 : rule submission successful for mass_dataset.csv
+INFO:django.utils.autoreload:C:\code\project_flex\ETL-2019\Team4\ETLFlex\rules\views.py changed, reloading.
+INFO:root:11/27/2019, 19:09:25 : rule submission successful for mass_dataset.csv
+INFO:django.utils.autoreload:C:\code\project_flex\ETL-2019\Team4\ETLFlex\rules\FlexFile\RepoScanner.py changed, reloading.
+WARNING:django.request:Bad Request: /sync/
+WARNING:django.request:Bad Request: /sync/
+WARNING:django.request:Bad Request: /sync/
+WARNING:django.request:Bad Request: /sync/
+INFO:django.utils.autoreload:C:\code\project_flex\ETL-2019\Team4\ETLFlex\rules\views.py changed, reloading.
+INFO:root:11/27/2019, 19:35:24 : rule match does not exist, create new rule for mass_dataset.csv
+INFO:django.utils.autoreload:C:\code\project_flex\ETL-2019\Team4\ETLFlex\rules\FlexFile\RepoScanner.py changed, reloading.
+INFO:root:11/27/2019, 19:41:11 : rule submission successful for mass_dataset.csv
+INFO:root:11/28/2019, 09:35:44 : rule already exists in database for mass_dataset.csv
+INFO:root:11/28/2019, 09:36:36 : rule already exists in database for mass_dataset.csv
+INFO:django.utils.autoreload:C:\code\project_flex\ETL-2019\Team4\ETLFlex\rules\FlexFile\Admin.py changed, reloading.
+INFO:root:11/28/2019, 10:59:35 : rule match does not exist, create new rule for mass_dataset.csv
+INFO:django.utils.autoreload:C:\code\project_flex\ETL-2019\Team4\ETLFlex\rules\FlexFile\Admin.py changed, reloading.
+INFO:root:11/28/2019, 11:07:15 : rule submission successful for mass_dataset.csv
+INFO:root:11/28/2019, 11:10:54 : rule submission successful for mass_dataset.csv
+INFO:root:11/28/2019, 11:48:41 : mass_dataset.csv successfully uploaded to database
+INFO:root:11/28/2019, 12:18:07 : mass_dataset.csv successfully uploaded to database
+INFO:root:11/28/2019, 12:19:04 : mass_dataset.csv successfully uploaded to database
+INFO:root:11/28/2019, 12:20:01 : mass_dataset.csv successfully uploaded to database
+INFO:root:11/28/2019, 12:20:59 : mass_dataset.csv successfully uploaded to database
+INFO:root:11/28/2019, 12:22:01 : mass_dataset.csv successfully uploaded to database
+INFO:root:11/28/2019, 12:24:26 : mass_dataset.csv successfully uploaded to database
+INFO:root:11/28/2019, 12:25:23 : mass_dataset.csv successfully uploaded to database
+INFO:root:11/28/2019, 13:18:26 : mass_dataset.csv successfully uploaded to database
+INFO:django.utils.autoreload:C:\code\project_flex\ETL-2019\Team4\ETLFlex\rules\FlexFile\Database\Database.py changed, reloading.
+ERROR:django.request:Internal Server Error: /sync/
+Traceback (most recent call last):
+  File "C:\Users\FRANK\.virtualenvs\Team4-xZI13qRf\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\FRANK\.virtualenvs\Team4-xZI13qRf\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\FRANK\.virtualenvs\Team4-xZI13qRf\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\FRANK\.virtualenvs\Team4-xZI13qRf\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\FRANK\.virtualenvs\Team4-xZI13qRf\lib\site-packages\django\views\generic\base.py", line 71, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\FRANK\.virtualenvs\Team4-xZI13qRf\lib\site-packages\rest_framework\views.py", line 505, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\FRANK\.virtualenvs\Team4-xZI13qRf\lib\site-packages\rest_framework\views.py", line 465, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\FRANK\.virtualenvs\Team4-xZI13qRf\lib\site-packages\rest_framework\views.py", line 476, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\FRANK\.virtualenvs\Team4-xZI13qRf\lib\site-packages\rest_framework\views.py", line 502, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\FRANK\.virtualenvs\Team4-xZI13qRf\lib\site-packages\rest_framework\decorators.py", line 50, in handler
+    return func(*args, **kwargs)
+  File "c:\code\project_flex\ETL-2019\Team4\ETLFlex\rules\views.py", line 51, in sync
+    file_result = rs.run_scanner()
+  File "c:\code\project_flex\ETL-2019\Team4\ETLFlex\rules\FlexFile\RepoScanner.py", line 78, in run_scanner
+    self.call_admin()
+  File "c:\code\project_flex\ETL-2019\Team4\ETLFlex\rules\FlexFile\RepoScanner.py", line 132, in call_admin
+    self.result = admin.check_for_file()
+  File "c:\code\project_flex\ETL-2019\Team4\ETLFlex\rules\FlexFile\Admin.py", line 195, in check_for_file
+    self.write_file()
+  File "c:\code\project_flex\ETL-2019\Team4\ETLFlex\rules\FlexFile\Admin.py", line 169, in write_file
+    self.db.cur.execute(query, prevent_inject)
+  File "C:\Users\FRANK\.virtualenvs\Team4-xZI13qRf\lib\site-packages\mysql\connector\cursor.py", line 561, in execute
+    "Not all parameters were used in the SQL statement")
+mysql.connector.errors.ProgrammingError: Not all parameters were used in the SQL statement
+INFO:django.utils.autoreload:C:\code\project_flex\ETL-2019\Team4\ETLFlex\rules\FlexFile\Admin.py changed, reloading.
+INFO:root:11/28/2019, 22:42:57 : f1.txt successfully uploaded to database
+INFO:django.utils.autoreload:C:\code\project_flex\ETL-2019\Team4\ETLFlex\rules\FlexFile\RepoScanner.py changed, reloading.

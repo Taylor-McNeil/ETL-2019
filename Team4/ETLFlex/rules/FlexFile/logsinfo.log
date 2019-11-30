@@ -1,0 +1,419 @@
+ERROR:django.request:Internal Server Error: /submit_rule/
+Traceback (most recent call last):
+  File "C:\Users\rutko\.virtualenvs\Team4-mgpI8ix-\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\rutko\.virtualenvs\Team4-mgpI8ix-\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\rutko\.virtualenvs\Team4-mgpI8ix-\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\rutko\.virtualenvs\Team4-mgpI8ix-\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\rutko\.virtualenvs\Team4-mgpI8ix-\lib\site-packages\django\views\generic\base.py", line 71, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\rutko\.virtualenvs\Team4-mgpI8ix-\lib\site-packages\rest_framework\views.py", line 505, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\rutko\.virtualenvs\Team4-mgpI8ix-\lib\site-packages\rest_framework\views.py", line 465, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\rutko\.virtualenvs\Team4-mgpI8ix-\lib\site-packages\rest_framework\views.py", line 476, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\rutko\.virtualenvs\Team4-mgpI8ix-\lib\site-packages\rest_framework\views.py", line 502, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\rutko\.virtualenvs\Team4-mgpI8ix-\lib\site-packages\rest_framework\decorators.py", line 50, in handler
+    return func(*args, **kwargs)
+  File "C:\Users\rutko\git\ETL-2019\Team4\ETLFlex\rules\views.py", line 34, in rule_submission
+    rule_result = admin.check_for_rule()
+  File "C:\Users\rutko\git\ETL-2019\Team4\ETLFlex\rules\FlexFile\Admin.py", line 206, in check_for_rule
+    self.write_rule()
+  File "C:\Users\rutko\git\ETL-2019\Team4\ETLFlex\rules\FlexFile\Admin.py", line 109, in write_rule
+    with open(self.config_path, 'r') as f:
+FileNotFoundError: [Errno 2] No such file or directory: 'C:\\code\\project_flex\\ETL-2019\\Team4\\ETLFlex\\rules\\FlexFile\\config\\last_fileid.txt'
+INFO:django.utils.autoreload:C:\Users\rutko\git\ETL-2019\Team4\ETLFlex\rules\FlexFile\Admin.py changed, reloading.
+INFO:root:11/30/2019, 00:25:38 : rule submission successful for MOCK_DATA.csv
+ERROR:django.request:Internal Server Error: /sync
+Traceback (most recent call last):
+  File "C:\Users\rutko\.virtualenvs\Team4-mgpI8ix-\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\rutko\.virtualenvs\Team4-mgpI8ix-\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\rutko\.virtualenvs\Team4-mgpI8ix-\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\rutko\.virtualenvs\Team4-mgpI8ix-\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\rutko\.virtualenvs\Team4-mgpI8ix-\lib\site-packages\django\views\generic\base.py", line 71, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\rutko\.virtualenvs\Team4-mgpI8ix-\lib\site-packages\rest_framework\views.py", line 505, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\rutko\.virtualenvs\Team4-mgpI8ix-\lib\site-packages\rest_framework\views.py", line 465, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\rutko\.virtualenvs\Team4-mgpI8ix-\lib\site-packages\rest_framework\views.py", line 476, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\rutko\.virtualenvs\Team4-mgpI8ix-\lib\site-packages\rest_framework\views.py", line 502, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\rutko\.virtualenvs\Team4-mgpI8ix-\lib\site-packages\rest_framework\decorators.py", line 50, in handler
+    return func(*args, **kwargs)
+  File "C:\Users\rutko\git\ETL-2019\Team4\ETLFlex\rules\views.py", line 52, in sync
+    file_result = rs.run_scanner()
+  File "C:\Users\rutko\git\ETL-2019\Team4\ETLFlex\rules\FlexFile\RepoScanner.py", line 55, in run_scanner
+    self.ftps = self.ftp_instance.ftp_conn()
+  File "C:\Users\rutko\git\ETL-2019\Team4\ETLFlex\rules\FlexFile\FTP_Connect.py", line 14, in ftp_conn
+    ftps = ftp_utility.MyFTP_TLS(self._host)
+  File "C:\Users\rutko\AppData\Local\Programs\Python\Python37\Lib\ftplib.py", line 745, in __init__
+    FTP.__init__(self, host, user, passwd, acct, timeout, source_address)
+  File "C:\Users\rutko\AppData\Local\Programs\Python\Python37\Lib\ftplib.py", line 117, in __init__
+    self.connect(host)
+  File "C:\Users\rutko\AppData\Local\Programs\Python\Python37\Lib\ftplib.py", line 152, in connect
+    source_address=self.source_address)
+  File "C:\Users\rutko\AppData\Local\Programs\Python\Python37\Lib\socket.py", line 727, in create_connection
+    raise err
+  File "C:\Users\rutko\AppData\Local\Programs\Python\Python37\Lib\socket.py", line 716, in create_connection
+    sock.connect(sa)
+ConnectionRefusedError: [WinError 10061] No connection could be made because the target machine actively refused it
+ERROR:django.request:Internal Server Error: /submit_rule
+Traceback (most recent call last):
+  File "C:\Users\rutko\.virtualenvs\Team4-mgpI8ix-\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\rutko\.virtualenvs\Team4-mgpI8ix-\lib\site-packages\django\utils\deprecation.py", line 93, in __call__
+    response = self.process_request(request)
+  File "C:\Users\rutko\.virtualenvs\Team4-mgpI8ix-\lib\site-packages\django\middleware\common.py", line 53, in process_request
+    path = self.get_full_path_with_slash(request)
+  File "C:\Users\rutko\.virtualenvs\Team4-mgpI8ix-\lib\site-packages\django\middleware\common.py", line 93, in get_full_path_with_slash
+    'url': request.get_host() + new_path,
+RuntimeError: You called this URL via POST, but the URL doesn't end in a slash and you have APPEND_SLASH set. Django can't redirect to the slash URL while maintaining POST data. Change your form to point to 127.0.0.1:8000/submit_rule/ (note the trailing slash), or set APPEND_SLASH=False in your Django settings.
+ERROR:django.request:Internal Server Error: /submit_rule/
+Traceback (most recent call last):
+  File "C:\Users\rutko\.virtualenvs\Team4-mgpI8ix-\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\rutko\.virtualenvs\Team4-mgpI8ix-\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\rutko\.virtualenvs\Team4-mgpI8ix-\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\rutko\.virtualenvs\Team4-mgpI8ix-\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\rutko\.virtualenvs\Team4-mgpI8ix-\lib\site-packages\django\views\generic\base.py", line 71, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\rutko\.virtualenvs\Team4-mgpI8ix-\lib\site-packages\rest_framework\views.py", line 505, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\rutko\.virtualenvs\Team4-mgpI8ix-\lib\site-packages\rest_framework\views.py", line 465, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\rutko\.virtualenvs\Team4-mgpI8ix-\lib\site-packages\rest_framework\views.py", line 476, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\rutko\.virtualenvs\Team4-mgpI8ix-\lib\site-packages\rest_framework\views.py", line 502, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\rutko\.virtualenvs\Team4-mgpI8ix-\lib\site-packages\rest_framework\decorators.py", line 50, in handler
+    return func(*args, **kwargs)
+  File "C:\Users\rutko\git\ETL-2019\Team4\ETLFlex\rules\views.py", line 33, in rule_submission
+    admin = Admin(data_capture)
+  File "C:\Users\rutko\git\ETL-2019\Team4\ETLFlex\rules\FlexFile\Admin.py", line 19, in __init__
+    self.file_name = self.data['file_name']
+KeyError: 'file_name'
+ERROR:django.request:Internal Server Error: /submit_rule/
+Traceback (most recent call last):
+  File "C:\Users\rutko\.virtualenvs\Team4-mgpI8ix-\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\rutko\.virtualenvs\Team4-mgpI8ix-\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\rutko\.virtualenvs\Team4-mgpI8ix-\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\rutko\.virtualenvs\Team4-mgpI8ix-\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\rutko\.virtualenvs\Team4-mgpI8ix-\lib\site-packages\django\views\generic\base.py", line 71, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\rutko\.virtualenvs\Team4-mgpI8ix-\lib\site-packages\rest_framework\views.py", line 505, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\rutko\.virtualenvs\Team4-mgpI8ix-\lib\site-packages\rest_framework\views.py", line 465, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\rutko\.virtualenvs\Team4-mgpI8ix-\lib\site-packages\rest_framework\views.py", line 476, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\rutko\.virtualenvs\Team4-mgpI8ix-\lib\site-packages\rest_framework\views.py", line 502, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\rutko\.virtualenvs\Team4-mgpI8ix-\lib\site-packages\rest_framework\decorators.py", line 50, in handler
+    return func(*args, **kwargs)
+  File "C:\Users\rutko\git\ETL-2019\Team4\ETLFlex\rules\views.py", line 34, in rule_submission
+    rule_result = admin.check_for_rule()
+  File "C:\Users\rutko\git\ETL-2019\Team4\ETLFlex\rules\FlexFile\Admin.py", line 206, in check_for_rule
+    self.write_rule()
+  File "C:\Users\rutko\git\ETL-2019\Team4\ETLFlex\rules\FlexFile\Admin.py", line 114, in write_rule
+    _prevent_inject = (self.file_id, self.file_name, str(self.received_col_num), None, self.source, self.src_type,
+AttributeError: 'Admin' object has no attribute 'received_col_num'
+ERROR:django.request:Internal Server Error: /submit_rule/
+Traceback (most recent call last):
+  File "C:\Users\rutko\.virtualenvs\Team4-mgpI8ix-\lib\site-packages\mysql\connector\connection_cext.py", line 472, in cmd_query
+    raw_as_string=raw_as_string)
+_mysql_connector.MySQLInterfaceError: Column 'file_name' cannot be null
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\rutko\.virtualenvs\Team4-mgpI8ix-\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\rutko\.virtualenvs\Team4-mgpI8ix-\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\rutko\.virtualenvs\Team4-mgpI8ix-\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\rutko\.virtualenvs\Team4-mgpI8ix-\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\rutko\.virtualenvs\Team4-mgpI8ix-\lib\site-packages\django\views\generic\base.py", line 71, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\rutko\.virtualenvs\Team4-mgpI8ix-\lib\site-packages\rest_framework\views.py", line 505, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\rutko\.virtualenvs\Team4-mgpI8ix-\lib\site-packages\rest_framework\views.py", line 465, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\rutko\.virtualenvs\Team4-mgpI8ix-\lib\site-packages\rest_framework\views.py", line 476, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\rutko\.virtualenvs\Team4-mgpI8ix-\lib\site-packages\rest_framework\views.py", line 502, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\rutko\.virtualenvs\Team4-mgpI8ix-\lib\site-packages\rest_framework\decorators.py", line 50, in handler
+    return func(*args, **kwargs)
+  File "C:\Users\rutko\git\ETL-2019\Team4\ETLFlex\rules\views.py", line 34, in rule_submission
+    rule_result = admin.check_for_rule()
+  File "C:\Users\rutko\git\ETL-2019\Team4\ETLFlex\rules\FlexFile\Admin.py", line 206, in check_for_rule
+    self.write_rule()
+  File "C:\Users\rutko\git\ETL-2019\Team4\ETLFlex\rules\FlexFile\Admin.py", line 118, in write_rule
+    self.db.cur.execute(_query, _prevent_inject)
+  File "C:\Users\rutko\.virtualenvs\Team4-mgpI8ix-\lib\site-packages\mysql\connector\cursor_cext.py", line 266, in execute
+    raw_as_string=self._raw_as_string)
+  File "C:\Users\rutko\.virtualenvs\Team4-mgpI8ix-\lib\site-packages\mysql\connector\connection_cext.py", line 475, in cmd_query
+    sqlstate=exc.sqlstate)
+mysql.connector.errors.IntegrityError: 1048 (23000): Column 'file_name' cannot be null
+INFO:root:11/30/2019, 00:42:08 : rule already exists in database for MOCK_DATA.csv
+INFO:root:11/30/2019, 00:44:46 : rule already exists in database for MOCK_DATA.csv
+INFO:root:11/30/2019, 00:47:59 : rule already exists in database for MOCK_DATA.csv
+INFO:root:11/30/2019, 00:49:03 : rule already exists in database for MOCK_DATA.csv
+INFO:root:11/30/2019, 00:54:40 : rule already exists in database for MOCK_DATA.csv
+INFO:root:11/30/2019, 01:00:56 : rule already exists in database for MOCK_DATA.csv
+INFO:root:11/30/2019, 01:01:03 : rule already exists in database for MOCK_DATA.csv
+ERROR:django.request:Internal Server Error: /sync
+Traceback (most recent call last):
+  File "C:\Users\rutko\.virtualenvs\Team4-mgpI8ix-\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\rutko\.virtualenvs\Team4-mgpI8ix-\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\rutko\.virtualenvs\Team4-mgpI8ix-\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\rutko\.virtualenvs\Team4-mgpI8ix-\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\rutko\.virtualenvs\Team4-mgpI8ix-\lib\site-packages\django\views\generic\base.py", line 71, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\rutko\.virtualenvs\Team4-mgpI8ix-\lib\site-packages\rest_framework\views.py", line 505, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\rutko\.virtualenvs\Team4-mgpI8ix-\lib\site-packages\rest_framework\views.py", line 465, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\rutko\.virtualenvs\Team4-mgpI8ix-\lib\site-packages\rest_framework\views.py", line 476, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\rutko\.virtualenvs\Team4-mgpI8ix-\lib\site-packages\rest_framework\views.py", line 502, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\rutko\.virtualenvs\Team4-mgpI8ix-\lib\site-packages\rest_framework\decorators.py", line 50, in handler
+    return func(*args, **kwargs)
+  File "C:\Users\rutko\git\ETL-2019\Team4\ETLFlex\rules\views.py", line 52, in sync
+    file_result = rs.run_scanner()
+  File "C:\Users\rutko\git\ETL-2019\Team4\ETLFlex\rules\FlexFile\RepoScanner.py", line 55, in run_scanner
+    self.ftps = self.ftp_instance.ftp_conn()
+  File "C:\Users\rutko\git\ETL-2019\Team4\ETLFlex\rules\FlexFile\FTP_Connect.py", line 14, in ftp_conn
+    ftps = ftp_utility.MyFTP_TLS(self._host)
+  File "C:\Users\rutko\AppData\Local\Programs\Python\Python37\Lib\ftplib.py", line 745, in __init__
+    FTP.__init__(self, host, user, passwd, acct, timeout, source_address)
+  File "C:\Users\rutko\AppData\Local\Programs\Python\Python37\Lib\ftplib.py", line 117, in __init__
+    self.connect(host)
+  File "C:\Users\rutko\AppData\Local\Programs\Python\Python37\Lib\ftplib.py", line 152, in connect
+    source_address=self.source_address)
+  File "C:\Users\rutko\AppData\Local\Programs\Python\Python37\Lib\socket.py", line 727, in create_connection
+    raise err
+  File "C:\Users\rutko\AppData\Local\Programs\Python\Python37\Lib\socket.py", line 716, in create_connection
+    sock.connect(sa)
+ConnectionRefusedError: [WinError 10061] No connection could be made because the target machine actively refused it
+ERROR:django.request:Internal Server Error: /sync
+Traceback (most recent call last):
+  File "C:\Users\rutko\.virtualenvs\Team4-mgpI8ix-\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\rutko\.virtualenvs\Team4-mgpI8ix-\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\rutko\.virtualenvs\Team4-mgpI8ix-\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\rutko\.virtualenvs\Team4-mgpI8ix-\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\rutko\.virtualenvs\Team4-mgpI8ix-\lib\site-packages\django\views\generic\base.py", line 71, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\rutko\.virtualenvs\Team4-mgpI8ix-\lib\site-packages\rest_framework\views.py", line 505, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\rutko\.virtualenvs\Team4-mgpI8ix-\lib\site-packages\rest_framework\views.py", line 465, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\rutko\.virtualenvs\Team4-mgpI8ix-\lib\site-packages\rest_framework\views.py", line 476, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\rutko\.virtualenvs\Team4-mgpI8ix-\lib\site-packages\rest_framework\views.py", line 502, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\rutko\.virtualenvs\Team4-mgpI8ix-\lib\site-packages\rest_framework\decorators.py", line 50, in handler
+    return func(*args, **kwargs)
+  File "C:\Users\rutko\git\ETL-2019\Team4\ETLFlex\rules\views.py", line 52, in sync
+    file_result = rs.run_scanner()
+  File "C:\Users\rutko\git\ETL-2019\Team4\ETLFlex\rules\FlexFile\RepoScanner.py", line 55, in run_scanner
+    self.ftps = self.ftp_instance.ftp_conn()
+  File "C:\Users\rutko\git\ETL-2019\Team4\ETLFlex\rules\FlexFile\FTP_Connect.py", line 14, in ftp_conn
+    ftps = ftp_utility.MyFTP_TLS(self._host)
+  File "C:\Users\rutko\AppData\Local\Programs\Python\Python37\Lib\ftplib.py", line 745, in __init__
+    FTP.__init__(self, host, user, passwd, acct, timeout, source_address)
+  File "C:\Users\rutko\AppData\Local\Programs\Python\Python37\Lib\ftplib.py", line 117, in __init__
+    self.connect(host)
+  File "C:\Users\rutko\AppData\Local\Programs\Python\Python37\Lib\ftplib.py", line 152, in connect
+    source_address=self.source_address)
+  File "C:\Users\rutko\AppData\Local\Programs\Python\Python37\Lib\socket.py", line 727, in create_connection
+    raise err
+  File "C:\Users\rutko\AppData\Local\Programs\Python\Python37\Lib\socket.py", line 716, in create_connection
+    sock.connect(sa)
+ConnectionRefusedError: [WinError 10061] No connection could be made because the target machine actively refused it
+ERROR:django.request:Internal Server Error: /sync
+Traceback (most recent call last):
+  File "C:\Users\rutko\.virtualenvs\Team4-mgpI8ix-\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\rutko\.virtualenvs\Team4-mgpI8ix-\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\rutko\.virtualenvs\Team4-mgpI8ix-\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\rutko\.virtualenvs\Team4-mgpI8ix-\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\rutko\.virtualenvs\Team4-mgpI8ix-\lib\site-packages\django\views\generic\base.py", line 71, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\rutko\.virtualenvs\Team4-mgpI8ix-\lib\site-packages\rest_framework\views.py", line 505, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\rutko\.virtualenvs\Team4-mgpI8ix-\lib\site-packages\rest_framework\views.py", line 465, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\rutko\.virtualenvs\Team4-mgpI8ix-\lib\site-packages\rest_framework\views.py", line 476, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\rutko\.virtualenvs\Team4-mgpI8ix-\lib\site-packages\rest_framework\views.py", line 502, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\rutko\.virtualenvs\Team4-mgpI8ix-\lib\site-packages\rest_framework\decorators.py", line 50, in handler
+    return func(*args, **kwargs)
+  File "C:\Users\rutko\git\ETL-2019\Team4\ETLFlex\rules\views.py", line 52, in sync
+    file_result = rs.run_scanner()
+  File "C:\Users\rutko\git\ETL-2019\Team4\ETLFlex\rules\FlexFile\RepoScanner.py", line 55, in run_scanner
+    self.ftps = self.ftp_instance.ftp_conn()
+  File "C:\Users\rutko\git\ETL-2019\Team4\ETLFlex\rules\FlexFile\FTP_Connect.py", line 14, in ftp_conn
+    ftps = ftp_utility.MyFTP_TLS(self._host)
+  File "C:\Users\rutko\AppData\Local\Programs\Python\Python37\Lib\ftplib.py", line 745, in __init__
+    FTP.__init__(self, host, user, passwd, acct, timeout, source_address)
+  File "C:\Users\rutko\AppData\Local\Programs\Python\Python37\Lib\ftplib.py", line 117, in __init__
+    self.connect(host)
+  File "C:\Users\rutko\AppData\Local\Programs\Python\Python37\Lib\ftplib.py", line 152, in connect
+    source_address=self.source_address)
+  File "C:\Users\rutko\AppData\Local\Programs\Python\Python37\Lib\socket.py", line 727, in create_connection
+    raise err
+  File "C:\Users\rutko\AppData\Local\Programs\Python\Python37\Lib\socket.py", line 716, in create_connection
+    sock.connect(sa)
+ConnectionRefusedError: [WinError 10061] No connection could be made because the target machine actively refused it
+ERROR:django.request:Internal Server Error: /sync
+Traceback (most recent call last):
+  File "C:\Users\rutko\.virtualenvs\Team4-mgpI8ix-\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\rutko\.virtualenvs\Team4-mgpI8ix-\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\rutko\.virtualenvs\Team4-mgpI8ix-\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\rutko\.virtualenvs\Team4-mgpI8ix-\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\rutko\.virtualenvs\Team4-mgpI8ix-\lib\site-packages\django\views\generic\base.py", line 71, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\rutko\.virtualenvs\Team4-mgpI8ix-\lib\site-packages\rest_framework\views.py", line 505, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\rutko\.virtualenvs\Team4-mgpI8ix-\lib\site-packages\rest_framework\views.py", line 465, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\rutko\.virtualenvs\Team4-mgpI8ix-\lib\site-packages\rest_framework\views.py", line 476, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\rutko\.virtualenvs\Team4-mgpI8ix-\lib\site-packages\rest_framework\views.py", line 502, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\rutko\.virtualenvs\Team4-mgpI8ix-\lib\site-packages\rest_framework\decorators.py", line 50, in handler
+    return func(*args, **kwargs)
+  File "C:\Users\rutko\git\ETL-2019\Team4\ETLFlex\rules\views.py", line 52, in sync
+    file_result = rs.run_scanner()
+  File "C:\Users\rutko\git\ETL-2019\Team4\ETLFlex\rules\FlexFile\RepoScanner.py", line 55, in run_scanner
+    self.ftps = self.ftp_instance.ftp_conn()
+  File "C:\Users\rutko\git\ETL-2019\Team4\ETLFlex\rules\FlexFile\FTP_Connect.py", line 14, in ftp_conn
+    ftps = ftp_utility.MyFTP_TLS(self._host)
+  File "C:\Users\rutko\AppData\Local\Programs\Python\Python37\Lib\ftplib.py", line 745, in __init__
+    FTP.__init__(self, host, user, passwd, acct, timeout, source_address)
+  File "C:\Users\rutko\AppData\Local\Programs\Python\Python37\Lib\ftplib.py", line 117, in __init__
+    self.connect(host)
+  File "C:\Users\rutko\AppData\Local\Programs\Python\Python37\Lib\ftplib.py", line 152, in connect
+    source_address=self.source_address)
+  File "C:\Users\rutko\AppData\Local\Programs\Python\Python37\Lib\socket.py", line 727, in create_connection
+    raise err
+  File "C:\Users\rutko\AppData\Local\Programs\Python\Python37\Lib\socket.py", line 716, in create_connection
+    sock.connect(sa)
+ConnectionRefusedError: [WinError 10061] No connection could be made because the target machine actively refused it
+ERROR:django.request:Internal Server Error: /sync
+Traceback (most recent call last):
+  File "C:\Users\rutko\.virtualenvs\Team4-mgpI8ix-\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\rutko\.virtualenvs\Team4-mgpI8ix-\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\rutko\.virtualenvs\Team4-mgpI8ix-\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\rutko\.virtualenvs\Team4-mgpI8ix-\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\rutko\.virtualenvs\Team4-mgpI8ix-\lib\site-packages\django\views\generic\base.py", line 71, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\rutko\.virtualenvs\Team4-mgpI8ix-\lib\site-packages\rest_framework\views.py", line 505, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\rutko\.virtualenvs\Team4-mgpI8ix-\lib\site-packages\rest_framework\views.py", line 465, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\rutko\.virtualenvs\Team4-mgpI8ix-\lib\site-packages\rest_framework\views.py", line 476, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\rutko\.virtualenvs\Team4-mgpI8ix-\lib\site-packages\rest_framework\views.py", line 502, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\rutko\.virtualenvs\Team4-mgpI8ix-\lib\site-packages\rest_framework\decorators.py", line 50, in handler
+    return func(*args, **kwargs)
+  File "C:\Users\rutko\git\ETL-2019\Team4\ETLFlex\rules\views.py", line 52, in sync
+    file_result = rs.run_scanner()
+  File "C:\Users\rutko\git\ETL-2019\Team4\ETLFlex\rules\FlexFile\RepoScanner.py", line 55, in run_scanner
+    self.ftps = self.ftp_instance.ftp_conn()
+  File "C:\Users\rutko\git\ETL-2019\Team4\ETLFlex\rules\FlexFile\FTP_Connect.py", line 14, in ftp_conn
+    ftps = ftp_utility.MyFTP_TLS(self._host)
+  File "C:\Users\rutko\AppData\Local\Programs\Python\Python37\Lib\ftplib.py", line 745, in __init__
+    FTP.__init__(self, host, user, passwd, acct, timeout, source_address)
+  File "C:\Users\rutko\AppData\Local\Programs\Python\Python37\Lib\ftplib.py", line 117, in __init__
+    self.connect(host)
+  File "C:\Users\rutko\AppData\Local\Programs\Python\Python37\Lib\ftplib.py", line 152, in connect
+    source_address=self.source_address)
+  File "C:\Users\rutko\AppData\Local\Programs\Python\Python37\Lib\socket.py", line 727, in create_connection
+    raise err
+  File "C:\Users\rutko\AppData\Local\Programs\Python\Python37\Lib\socket.py", line 716, in create_connection
+    sock.connect(sa)
+ConnectionRefusedError: [WinError 10061] No connection could be made because the target machine actively refused it
+ERROR:django.request:Internal Server Error: /sync
+Traceback (most recent call last):
+  File "C:\Users\rutko\.virtualenvs\Team4-mgpI8ix-\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\rutko\.virtualenvs\Team4-mgpI8ix-\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\rutko\.virtualenvs\Team4-mgpI8ix-\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\rutko\.virtualenvs\Team4-mgpI8ix-\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\rutko\.virtualenvs\Team4-mgpI8ix-\lib\site-packages\django\views\generic\base.py", line 71, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\rutko\.virtualenvs\Team4-mgpI8ix-\lib\site-packages\rest_framework\views.py", line 505, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\rutko\.virtualenvs\Team4-mgpI8ix-\lib\site-packages\rest_framework\views.py", line 465, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\rutko\.virtualenvs\Team4-mgpI8ix-\lib\site-packages\rest_framework\views.py", line 476, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\rutko\.virtualenvs\Team4-mgpI8ix-\lib\site-packages\rest_framework\views.py", line 502, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\rutko\.virtualenvs\Team4-mgpI8ix-\lib\site-packages\rest_framework\decorators.py", line 50, in handler
+    return func(*args, **kwargs)
+  File "C:\Users\rutko\git\ETL-2019\Team4\ETLFlex\rules\views.py", line 52, in sync
+    file_result = rs.run_scanner()
+  File "C:\Users\rutko\git\ETL-2019\Team4\ETLFlex\rules\FlexFile\RepoScanner.py", line 55, in run_scanner
+    self.ftps = self.ftp_instance.ftp_conn()
+  File "C:\Users\rutko\git\ETL-2019\Team4\ETLFlex\rules\FlexFile\FTP_Connect.py", line 14, in ftp_conn
+    ftps = ftp_utility.MyFTP_TLS(self._host)
+  File "C:\Users\rutko\AppData\Local\Programs\Python\Python37\Lib\ftplib.py", line 745, in __init__
+    FTP.__init__(self, host, user, passwd, acct, timeout, source_address)
+  File "C:\Users\rutko\AppData\Local\Programs\Python\Python37\Lib\ftplib.py", line 117, in __init__
+    self.connect(host)
+  File "C:\Users\rutko\AppData\Local\Programs\Python\Python37\Lib\ftplib.py", line 152, in connect
+    source_address=self.source_address)
+  File "C:\Users\rutko\AppData\Local\Programs\Python\Python37\Lib\socket.py", line 727, in create_connection
+    raise err
+  File "C:\Users\rutko\AppData\Local\Programs\Python\Python37\Lib\socket.py", line 716, in create_connection
+    sock.connect(sa)
+ConnectionRefusedError: [WinError 10061] No connection could be made because the target machine actively refused it
+INFO:django.utils.autoreload:C:\Users\rutko\git\ETL-2019\Team4\ETLFlex\rules\FlexFile\Database\Database.py changed, reloading.

@@ -1,6 +1,6 @@
 from .Database.Database import Database
 import pandas as pd
-from . import logmanager
+from .logmanager import LogManager
 from datetime import datetime
 
 
@@ -52,8 +52,13 @@ class Admin:
 
         # File attributes
         self.file_ext = ''
-        self.downloads_dir = '.\\downloads\\'
+        # self.for_postman_dir = '.\\downloads\\'
+        # self.for_sys_dir = '.\\downloads\\'
         self.now = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+
+        # File paths
+        self.config_path = 'rules\\FlexFile\\config\\last_fileid.txt'
+        self.downloads_path = 'rules\\FlexFile\\downloads\\'
 
     def check_filename(self):
         # Pull record matching file_name from file_master
@@ -101,7 +106,7 @@ class Admin:
         self.username = self.data['username']
         self._pass_key = self.data['password']
 
-        with open('.\\config\\last_fileid.txt', 'r') as f:
+        with open(self.config_path, 'r') as f:
             self.file_id = int(f.read()) + 1
 
         _query = 'INSERT INTO file_master (file_id, file_name, num_cols, last_update, src, src_type, dir, username,' \
@@ -125,7 +130,7 @@ class Admin:
         self.db.conn.commit()
         # self.db.cur.close()
 
-        with open('.\\config\\last_fileid.txt', 'w') as f:
+        with open(self.config_path, 'w') as f:
             f.write(str(self.file_id))
 
         self.col_num = 1
@@ -145,19 +150,21 @@ class Admin:
 
         read_file = None
         if self.file_ext in csv_ext:
-            read_file = pd.read_csv(self.downloads_dir + str(self.file_name))
+            read_file = pd.read_csv(self.downloads_path + str(self.file_name), delimiter=",", dtype=str,
+                                    low_memory=False)
         elif self.file_ext in xlsx_ext:
-            read_file = pd.read_excel(self.downloads_dir + str(self.file_name))
+            read_file = pd.read_excel(self.downloads_path + str(self.file_name))
         df = pd.DataFrame(read_file)
         number_of_rows = len(df.index)
 
         self.col_num = 0
+        current_date = str(self.now)
         for row in range(number_of_rows):
             for col in range(self.received_col_num):
-                query = 'INSERT INTO data_master (file_id, col_num, row_num, value) VALUES ' \
-                        '(%s, %s, %s, %s)'
+                query = 'INSERT INTO data_master (file_id, col_num, row_num, value, date_uploaded) VALUES ' \
+                        '(%s, %s, %s, %s, %s)'
                 prevent_inject = (self.file_id, str(self.col_num + 1), str(row + 1),
-                                  str(df.iloc[row][self.columns_from_file[col]]))
+                                  str(df.iloc[row][self.columns_from_file[col]]), current_date)
                 self.col_num += 1
                 self.db.cur.execute(query, prevent_inject)
             self.col_num = 0
@@ -167,7 +174,7 @@ class Admin:
         self.col_name = ''
 
         _query = 'UPDATE file_master SET last_update = (%s) WHERE file_id = (%s)'
-        _prevent_inject = (str(self.now), str(self.file_id))
+        _prevent_inject = (current_date, str(self.file_id))
         self.db.cur.execute(_query, _prevent_inject)
         self.db.conn.commit()
 

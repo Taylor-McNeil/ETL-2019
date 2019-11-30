@@ -10,23 +10,37 @@ class Rules extends Component {
            <Fragment>
                <Header />
                <Formik
-                   initialValues={{ src: '', directory: '', type: '', username: '', password: '', filename: '', col: []}}
+                   initialValues={{ src: '', directory: '', type: '', username: '', password: '', file_name: '', col: []}}
                    validate={values => {
                        const errors = {};
                        if (!values.type) {
                            errors.type = ' Source Type is Required';
                        }
-                       if (!values.filename) {
-                           errors.filename = ' File Name is Required';
+                       if (!values.file_name) {
+                           errors.file_name = ' File Name is Required';
                        }
                        return errors;
                    }}
                    onSubmit={(values, { setSubmitting }) => {
-                       setTimeout(() => {
+                        let url = "http://127.0.0.1:8000/submit_rule/";
+                        fetch(url, {
+                            method: 'POST',
+                            headers: {
+                                'Accept': 'application/json',
+                                'Content-Type': 'application/json'
+                                },
+                            body: JSON.stringify(values)
+                            }).then((response) => response.json())
+                            .then((responseJson) => {
+                                alert(responseJson);
+
+                            })
+                        setSubmitting(false);
+                       /*setTimeout(() => {
                            alert(JSON.stringify(values,null,2));
                            console.log(JSON.stringify(values, null,2));
                            setSubmitting(false);
-                       }, 400);
+                       }, 400);*/
                    }}
                >
                    {({
@@ -135,13 +149,13 @@ class Rules extends Component {
                                        <label>File Name</label>
                                        <input
                                            type="text"
-                                           name="filename"
+                                           name="file_name"
                                            onChange={handleChange}
                                            onBlur={handleBlur}
-                                           value={values.filename}
+                                           value={values.file_name}
                                            className="form-control"
                                        />
-                                       <p className="text-danger">{errors.filename && touched.filename && errors.filename}</p>
+                                       <p className="text-danger">{errors.file_name && touched.file_name && errors.file_name}</p>
                                    </div>
                                    <label>Columns</label>
                                    <FieldArray

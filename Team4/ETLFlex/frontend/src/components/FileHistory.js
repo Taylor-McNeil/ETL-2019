@@ -1,18 +1,33 @@
 import React, { Component, Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import Header from './layout/Header';
+import queryString from 'query-string';
+
 
 export class FileHistory extends Component {
-    state ={
+    state ={        
+        file_name: null,
         loading: true,
-        table: null,
+        table: null
     }
     async componentDidMount(){
-        const url = "http://127.0.0.1:8000/get_file_history";
-        const response = await fetch(url);
+        const url_string = queryString.parse(this.props.location.search)
+
+        const url = "http://127.0.0.1:8000/get_file_history/";
+        const response = await fetch(url, {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+              },
+            body: JSON.stringify({"file_name": url_string.file_name})
+          });
         const data = await response.json();
-        console.log(data);
-        this.setState({table: data, loading: false});
+
+        this.setState({
+            file_name: url_string.file_name,
+            table: data, 
+            loading: false});
     }
 
     getTable(){
@@ -21,11 +36,10 @@ export class FileHistory extends Component {
 
             for (let i = 0; i < this.state.table.length; i++) {
                 let row = this.state.table[i];
-                console.log(row);
                 table.push(<tr class = "row">
                     <td className="col-2">{row.date_uploaded}</td>
-                    <td className="col-4">{row.rows}</td>
-                    <td className="col-2"><Link to="/fileview">View</Link></td>
+                    <td className="col-4">{row.num_of_rows}</td>
+                    <td className="col-2"><Link to={"/fileview/?file_name="+this.state.file_name+"&date_uploaded="+row.date_uploaded}>View</Link></td>
                 </tr>)
                 }
                 return table
@@ -35,11 +49,7 @@ export class FileHistory extends Component {
     getName(){
         
         if (this.state.loading === false) {
-            let name = []
-
-            let row = this.state.table[0];
-            name.push(<h3>{row.file_name}</h3>)
-            return name
+            return <h3>{this.state.file_name}</h3>;
         }
         
         return <h3>Loading...</h3>;

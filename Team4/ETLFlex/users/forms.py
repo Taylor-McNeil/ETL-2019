@@ -6,10 +6,10 @@ class CustomUserCreationForm(UserCreationForm):
 
     class Meta:
         model = CustomUser
-        fields = ('username', 'ftpURL','ftpDirectory', 'ftpUsername', 'ftpPassword')
+        fields = ('username',)
 
 class CustomUserChangeForm(UserChangeForm):
 
     class Meta:
         model = CustomUser
-        fields = ('username', 'ftpURL', 'ftpDirectory', 'ftpUsername', 'ftpPassword')
+        fields = ('username',)
