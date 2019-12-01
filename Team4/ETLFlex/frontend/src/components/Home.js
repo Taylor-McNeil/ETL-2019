@@ -28,7 +28,8 @@ export class Home extends Component {
                     <td className="col-2">{row.file_id}</td>
                     <td className="col-4"><Link to={"/filehistory/?file_name="+row.file_name}>{row.file_name}</Link></td>
                     <td className="col-4">{row.last_update}</td>
-                    <td className="col-2"><Link to="/rules?">Edit</Link></td>
+                    <td ><Link to="/rules?">Edit</Link></td>
+                    <td onClick={() => { this.syncRules(row.file_name)}}><Link>Refresh</Link></td>
                 </tr>)
                 }
                 return table
@@ -36,13 +37,22 @@ export class Home extends Component {
         return <div>Loading...</div>;
     }
 
-    syncRules(){
-        let url = "http://127.0.0.1:8000/sync";
-        fetch(url).then((response) => response.json())
+    syncRules(name){
+        let url = "http://127.0.0.1:8000/sync/";
+
+        fetch(url, {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+                },
+            body: JSON.stringify({"file_name": name})
+            }).then((response) => response.json())
             .then((responseJson) => {
-                console.log(responseJson);
+                console.log(responseJson)
                 alert(responseJson);
-        })
+        });
+        window.location.reload();
     }
 
 
@@ -58,7 +68,8 @@ export class Home extends Component {
                                     <th className="col-2">File ID</th>
                                     <th className="col-4">File Name</th>
                                     <th className="col-4">Last Upload</th>
-                                    <th className="col-2" onClick={this.syncRules}><Link>Sync</Link></th>
+                                    <th >Edit</th>
+                                    <td >Sync</td>
                                 </tr>
                             </thead>
                             <tbody>
