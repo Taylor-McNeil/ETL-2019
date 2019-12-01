@@ -44,15 +44,16 @@ def rule_submission(input):
         return Response(e.args[0], status.HTTP_400_BAD_REQUEST)
 
 
-@api_view(["GET"])
+@api_view(["POST"])
 def sync(input):
-    # No input required
+    # Input json must have file_name
     try:
+        data_capture = json.loads(input.body)
         rs = RepoScanner()
-        file_result = rs.run_scanner()
+        file_result = rs.file_sync(data_capture['file_name'])
         response_dict = {
-            'Success': 'Database has been updated',
-            'Failure': 'Database has not been updated'
+            'Success': 'File has been updated',
+            'Failure': 'File has not been updated'
         }
         if file_result:
             return JsonResponse(response_dict['Success'], safe=False)

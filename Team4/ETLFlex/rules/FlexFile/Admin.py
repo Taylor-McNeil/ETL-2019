@@ -57,8 +57,12 @@ class Admin:
         self.now = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
 
         # File paths
-        self.config_path = 'rules\\FlexFile\\config\\last_fileid.txt'
-        self.downloads_path = 'rules\\FlexFile\\downloads\\'
+        self.config_path = '.\\rules\\FlexFile\\config\\last_fileid.txt'
+        self.downloads_path = '.\\rules\\FlexFile\\downloads\\'
+
+        # FOR FRANKIE'S SYSTEM
+        # self.config_path = 'c:\\swe\\ETL-2019\\Team4\\ETLFlex\\rules\\FlexFile\\config\\last_fileid.txt'
+        # self.downloads_path = 'c:\\swe\\ETL-2019\\Team4\\ETLFlex\\rules\\FlexFile\\downloads\\'
 
     def check_filename(self):
         # Pull record matching file_name from file_master
@@ -190,6 +194,7 @@ class Admin:
 
     def check_for_file(self):
         result = self.run_rule_check()
+        print("RESULT", result)
         if result:
             # Write file
             self.write_file()

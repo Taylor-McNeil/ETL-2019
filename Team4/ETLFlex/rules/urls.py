@@ -12,7 +12,7 @@ router.register('api/rules', RulesViewSet, 'rules')
 urlpatterns = [
     path('', include(router.urls)),
     url('submit_rule/', views.rule_submission),
-    url('sync', views.sync),
+    url('sync/', views.sync),
     url('get_rules/', views.get_rules),
     url('get_file_history/', views.get_file_history),
     url('get_file_data/', views.get_file_data)

@@ -1,6 +1,7 @@
 import mysql.connector
 import pandas as pd
 from datetime import datetime
+import time
 
 
 class Database:
@@ -30,7 +31,13 @@ class Database:
         print(df)
         print()
 
-    # Grab all repository info from DB for creating connections
+    # For single file sync
+    def get_conn(self, file_name):
+        query = 'SELECT src,src_type,dir,username,pass_key FROM ' + self._file_master + ' WHERE file_name = %s'
+        df = pd.read_sql(query, self.conn, params=(file_name,))
+        return df.iloc[0].to_dict()
+
+    # For full sync - Grab all repository info from DB for creating connections
     def get_conns(self):
         all_conns = []
         query = 'SELECT file_name,src,src_type,dir,username,pass_key FROM ' + self._file_master
@@ -38,6 +45,17 @@ class Database:
         for i in df.index:
             all_conns.append(df.iloc[i].to_dict())
         return all_conns
+
+    # Get single rule for dashboard (after sync update)
+    def get_rule_after_sync(self, file_name):
+        temp = []
+        query = 'SELECT file_id,file_name,last_update FROM ' + self._file_master + ' WHERE file_name = %s'
+        df = pd.read_sql(query, self.conn, params=(file_name,))
+        for i in df.index:
+            temp.append(df.iloc[i].to_dict())
+
+        output = self.output_refactor(temp)
+        return output[0]
 
     # Get all rules for dashboard
     def get_rules(self):

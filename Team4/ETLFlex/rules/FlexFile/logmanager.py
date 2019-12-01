@@ -5,10 +5,13 @@ from datetime import datetime
 class LogManager:
 
     def __init__(self):
-        self.logs_path = 'rules\FlexFile\logs'
+        self.logs_path = '.\\rules\\FlexFile\\logs\\'
+
+        # FOR FRANKIE'S SYSTEM
+        # self.logs_path = 'c:\\swe\\ETL-2019\\Team4\\ETLFlex\\rules\\FlexFile\\logs\\'
 
         # System logs
-        self.ERROR_LOG = self.logs_path + '.errors.log'
+        self.ERROR_LOG = self.logs_path + 'errors.log'
         self.DEBUG_LOG = self.logs_path + 'debug.log'
         self.STATUS_LOG = self.logs_path + 'info.log'
         self.CRITICAL_LOG = self.logs_path + 'critical.log'

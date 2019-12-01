@@ -7,6 +7,7 @@ import pathlib
 import urllib.request
 import shutil
 from datetime import datetime
+import time
 
 
 class RepoScanner:
@@ -41,9 +42,50 @@ class RepoScanner:
         self.now = datetime.now().strftime('%Y%m%d')
 
         # File paths
-        self.config_path = 'C:\\code\\project_flex\\ETL-2019\\Team4\\ETLFlex\\rules\\FlexFile\\config\\last_fileid.txt'
-        self.downloads_path = 'C:\\code\\project_flex\\ETL-2019\\Team4\\ETLFlex\\rules\\FlexFile\\downloads\\'
+        # FOR FRANKIE'S SYSTEM
+        # self.config_path = 'C:\\swe\\ETL-2019\\Team4\\ETLFlex\\rules\\FlexFile\\config\\last_fileid.txt'
+        # self.downloads_path = 'C:\\swe\\ETL-2019\\Team4\\ETLFlex\\rules\\FlexFile\\downloads\\'
 
+        self.config_path = '.\\rules\\FlexFile\\config\\last_fileid.txt'
+        self.downloads_path = '.\\rules\\FlexFile\\downloads\\'
+
+    def file_sync(self, file_name):
+        self.file_list.append(file_name)
+        try:
+            conn_data = self.db.get_conn(file_name)
+            # Scanner on FTP
+            if str(conn_data['src_type']).lower() == 'ftp':
+                self.ftp_instance = FTP_Connect(conn_data['src'], conn_data['username'],
+                                                conn_data['pass_key'], conn_data['dir'])
+                self.ftps = self.ftp_instance.ftp_conn()
+                self.pwd = self.ftps.pwd()
+                self.read_ftp_file_names()
+                self.download_ftp_files()
+
+            # Scanner on url
+            if str(conn_data['src_type']).lower() == 'url':
+                self.url = conn_data['src']
+                try:
+                    with urllib.request.urlopen(conn_data['src']) as response, \
+                            open(self.downloads_path + str(conn_data['file_name']), 'wb') as out_file:
+                        shutil.copyfileobj(response, out_file)
+                except urllib.request.HTTPError as e:
+                    print(e)
+
+            # Scanner on local file system
+            if str(conn_data['src_type']).lower() == 'local':
+                # do something
+                pass
+
+        except IndexError:
+            print('File name does not exist in database.')
+
+        self.call_admin()
+        time.sleep(1)
+        return self.response
+        # return self.db.get_rule_after_sync(file_name)
+
+    # ONLY REQUIRED IF WE ARE DOING A FULL SYNC -- IGNORE FOR NOW
     def run_scanner(self):
         self.conns = self.db.get_conns()
         for conn in self.conns:
@@ -59,15 +101,7 @@ class RepoScanner:
 
             # Scanner on url
             if str(conn['src_type']).lower() == 'url':
-                # self.url = conn['src']
-                # try:
-                #     with urllib.request.urlopen(conn['src']) as response, open('.\\rules\\FlexFile\\downloads\\' +
-                #                                                                str(conn['file_name']),
-                #                                                                'wb') as out_file:
-                #         shutil.copyfileobj(response, out_file)
-                # except urllib.request.HTTPError as e:
-                #     print(e)
-                # self.call_admin()
+                # do something
                 continue
 
             # Scanner on local file system
@@ -123,6 +157,7 @@ class RepoScanner:
 
                 # Grab column headers from file
                 self.column_list = list(read_file.columns)
+
                 data = {
                     'file_name': file,
                     'col': self.column_list
@@ -130,6 +165,7 @@ class RepoScanner:
 
                 admin = Admin(data)
                 self.result = admin.check_for_file()
+                print(self.result)
 
                 # If we want to delete file from system
                 if self.result:
@@ -151,3 +187,8 @@ class RepoScanner:
         self.ftps.close()
 
 
+def main():
+    rs = RepoScanner()
+    rs.file_sync('hello')
+
+# main()

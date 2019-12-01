@@ -1,6 +1,6 @@
-from Team4.ETLFlex.rules.FlexFile.Database.Database import Database
-from Team4.ETLFlex.rules.FlexFile.Admin import Admin
-from Team4.ETLFlex.rules.FlexFile.RepoScanner import RepoScanner
+from .Database.Database import Database
+from .Admin import Admin
+from .RepoScanner import RepoScanner
 import json
 import timeit
 
@@ -25,10 +25,13 @@ def main():
         "date_uploaded": "2019-11-28 22:42:57"
     }
 
+    rs = RepoScanner()
+    rs.file_sync(data['file_name'])
+
     # Database retrieval test
-    db = Database()
+    # db = Database()
     # print(db.get_file_history(data))
-    print(db.get_file_data(data))
+    # db.get_conn(data['file_name'])
     # print(db.get_rules())
 
     # Admin test for rule submission
@@ -38,10 +41,10 @@ def main():
     # Sync test
     # def code_to_test():
     #     rs = RepoScanner()
-    #     rs.run_scanner()
+    #     rs.file_sync(data['file_name'])
     #
     # elapsed_time = timeit.timeit(code_to_test, number=100)/100
     # print('{} seconds'.format(elapsed_time))
 
 
-main()
+#main()

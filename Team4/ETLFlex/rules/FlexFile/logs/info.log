@@ -99,3 +99,5 @@ mysql.connector.errors.ProgrammingError: Not all parameters were used in the SQL
 INFO:django.utils.autoreload:C:\code\project_flex\ETL-2019\Team4\ETLFlex\rules\FlexFile\Admin.py changed, reloading.
 INFO:root:11/28/2019, 22:42:57 : f1.txt successfully uploaded to database
 INFO:django.utils.autoreload:C:\code\project_flex\ETL-2019\Team4\ETLFlex\rules\FlexFile\RepoScanner.py changed, reloading.
+INFO:root:12/01/2019, 12:38:17 : f1.txt successfully uploaded to database
+INFO:django.utils.autoreload:C:\swe\ETL-2019\Team4\ETLFlex\rules\FlexFile\RepoScanner.py changed, reloading.
