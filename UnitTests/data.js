@@ -42,3 +42,5 @@ function NoDuplicateColumns(colName){
         return false;
         }  
 }
+
+/*There needs to be a function to check if the file was copied into a specific location after the inital download. More information about this request would be needed. Are the users specifiying where the file should go> If not then it would be a modified verison of the fileExists() method. More research required.*/
